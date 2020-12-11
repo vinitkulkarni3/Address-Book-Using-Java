@@ -1,6 +1,7 @@
 
 package com.addressbookmain;
 
+import static java.lang.System.exit;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -82,7 +83,7 @@ public class AddressBookMain
         int temp = 1;
         while(temp > 0)
         {
-            System.out.println("[1.Edit]    [2.Delete]  [3.Check&Add]   [4.SortByFName] [5.SortBy_city_state_zip] [6.Store_city_state_firstname]");
+            System.out.println("[1.Edit]    [2.Delete]  [3.Check&Add]   [4.SortByFName] [5.SortBy_city_state_zip] [6.Store_city_state_firstname] [7.SearchByCity] [8.SearchByState] [9.Exit]");
             System.out.print("Enter your choice : ");
             int choice = sc.nextInt();
             switch(choice)
@@ -260,6 +261,48 @@ public class AddressBookMain
                         storeFirstName.addAll(storeState);
 
                         System.out.print(storeFirstName);
+                break;
+                
+                case 7: //sort by state city
+                        int flagg = 0;
+                        System.out.println("enter state name to match");
+                        String searchState = sc.next();
+                        
+                        for(Iterator<Person> itrr = personList.iterator(); itrr.hasNext();)
+                        { 
+                            Person p = (Person)itrr.next();
+                            if(p.state.equals(searchState))
+                            {
+                                flagg = 1;
+                                System.out.println(p.firstName+" "+p.lastName+" "+p.address+" "+" "+p.zip+" "+p.phoneNumber);
+                            }
+                    
+                        }
+                            if(flagg != 1)
+                                System.out.println("wrong state name");
+                break;
+                
+                case 8: //sort by city name
+                        int flag = 0;
+                        System.out.println("enter city name to match");
+                        String searchCity = sc.next();
+                    
+                        for(Iterator<Person> itrr = personList.iterator(); itrr.hasNext();)
+                        { 
+                            Person p = (Person)itrr.next();
+                            if(p.city.equals(searchCity))
+                            {
+                                flag = 1;
+                                System.out.println(p);
+                            }
+                        }
+                            if(flag != 1)
+                                System.out.println("wrong city name");
+                break;
+                
+                
+                case 9: //exit from loop
+                        exit(0);
                 break;
                 
                 default: System.out.println("Invalid Option");
