@@ -83,7 +83,7 @@ public class AddressBookMain
         int temp = 1;
         while(temp > 0)
         {
-            System.out.println("[1.Edit]    [2.Delete]  [3.Check&Add]   [4.SortByFName] [5.SortBy_city_state_zip] [6.Store_city_state_firstname] [7.SearchByCity] [8.SearchByState] [9.Exit]");
+            System.out.println("[1.Edit]    [2.Delete]  [3.Check&Add]   [4.SortByFName] [5.SortBy_city_state_zip] [6.Store_city_state_firstname] [7.SearchByCity] [8.SearchByState] [9.Exit] [10.Display]");
             System.out.print("Enter your choice : ");
             int choice = sc.nextInt();
             switch(choice)
@@ -274,7 +274,8 @@ public class AddressBookMain
                             if(p.state.equals(searchState))
                             {
                                 flagg = 1;
-                                System.out.println(p.firstName+" "+p.lastName+" "+p.address+" "+" "+p.zip+" "+p.phoneNumber);
+                                //System.out.println(p.firstName+" "+p.lastName+" "+p.address+" "+" "+p.zip+" "+p.phoneNumber);
+                                System.out.println(p);
                             }
                     
                         }
@@ -303,6 +304,14 @@ public class AddressBookMain
                 
                 case 9: //exit from loop
                         exit(0);
+                break;
+                
+                case 10:
+                        for(Iterator<Person> itr1 = personList.iterator(); itr1.hasNext();)
+                        { 
+                            Person p = (Person)itr1.next();
+                            System.out.println(p);
+                        }
                 break;
                 
                 default: System.out.println("Invalid Option");
