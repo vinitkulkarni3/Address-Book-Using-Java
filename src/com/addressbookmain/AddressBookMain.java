@@ -60,13 +60,13 @@ public class AddressBookMain
         int temp = 1;
         while(temp > 0)
         {
-            System.out.println("[1.Edit]    [2.Delete]  [3.Add]");
+            System.out.println("[1.Edit]    [2.Delete]  [3.Check&Add]");
             System.out.print("Enter your choice : ");
             int choice = sc.nextInt();
             switch(choice)
             {
                 case 1: //Edit Existing
-                        System.out.print("enter the name to edi t: ");
+                        System.out.print("enter the name to edit: ");
                         String tempFirstName = sc.next();
             
                         for(Iterator<Person> itrr = personList.iterator(); itrr.hasNext();)
@@ -144,7 +144,7 @@ public class AddressBookMain
                         }
                 break;
                 
-                case 3: //Add Multiple person
+                case 3: //cehcks duplicate and Add Multiple person
                         System.out.print("enter name firstname: ");
                         String searchFirstName = sc.next();
                         Predicate<Person> pStream = s -> s.firstName.contains(searchFirstName);
