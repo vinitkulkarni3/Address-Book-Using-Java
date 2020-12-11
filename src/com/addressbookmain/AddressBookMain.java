@@ -82,7 +82,7 @@ public class AddressBookMain
         int temp = 1;
         while(temp > 0)
         {
-            System.out.println("[1.Edit]    [2.Delete]  [3.Check&Add]   [4.SortByFName]");
+            System.out.println("[1.Edit]    [2.Delete]  [3.Check&Add]   [4.SortByFName] [5.SortBy_city_state_zip] [6.Store_city_state_firstname]");
             System.out.print("Enter your choice : ");
             int choice = sc.nextInt();
             switch(choice)
@@ -236,8 +236,30 @@ public class AddressBookMain
                         else
                         {
                             System.out.println("Invalid option");
-                        }
+                        }    
+                break;
+                
+                case 6: //store by first name, city, state
+                        ArrayList<String> storeCity = new ArrayList<String>(); 
+                        ArrayList<String> storeState = new ArrayList<String>();
+                        ArrayList<String> storeFirstName = new ArrayList<String>();
+
+                        for(Iterator<Person> itr1 = personList.iterator(); itr1.hasNext();)
+                        { 
+                            Person p = (Person)itr1.next();
                            
+                            String tempfirstname = p.firstName;
+                            String tempstate = p.state;
+                            String tempcity = p.city;
+                           
+                            storeFirstName.add(tempfirstname);
+                            storeCity.add(tempcity);
+                            storeState.add(tempstate);
+                        }
+                        storeFirstName.addAll(storeCity);
+                        storeFirstName.addAll(storeState);
+
+                        System.out.print(storeFirstName);
                 break;
                 
                 default: System.out.println("Invalid Option");
