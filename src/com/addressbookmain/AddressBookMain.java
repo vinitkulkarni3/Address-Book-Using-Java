@@ -2,6 +2,7 @@
 package com.addressbookmain;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.function.Predicate;
@@ -26,6 +27,27 @@ class Person
         this.zip = zip;
         this.phoneNumber = phoneNumber;
     }    
+    
+    public String getfName() {
+      return firstName;
+   }
+
+    public String getCity(){
+        return city;
+    }
+    
+    public String getState(){
+        return state;
+    }
+    
+    public String getZip(){
+        return zip;
+    }
+
+    @Override
+    public String toString() {
+        return "{" + "firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", city=" + city + ", state=" + state + ", zip=" + zip + ", phoneNumber=" + phoneNumber + '}';
+    }
 }
 
 public class AddressBookMain 
@@ -60,7 +82,7 @@ public class AddressBookMain
         int temp = 1;
         while(temp > 0)
         {
-            System.out.println("[1.Edit]    [2.Delete]  [3.Check&Add]");
+            System.out.println("[1.Edit]    [2.Delete]  [3.Check&Add]   [4.SortByFName]");
             System.out.print("Enter your choice : ");
             int choice = sc.nextInt();
             switch(choice)
@@ -174,6 +196,18 @@ public class AddressBookMain
 
                             System.out.println("Inserted");
                         }
+                break;
+                
+                case 4: //Sort by first name
+                        System.out.println("Sorted Successfully");
+                        personList.sort(Comparator.comparing(Person::getfName));
+                        System.out.println("after sorting:");
+                        for(Iterator<Person> itr1 = personList.iterator(); itr1.hasNext();)
+                        { 
+                            Person p = (Person)itr1.next();
+                            System.out.println(p); //called toString method here
+                        }
+                        System.out.println();
                 break;
                 
                 default: System.out.println("Invalid Option");
