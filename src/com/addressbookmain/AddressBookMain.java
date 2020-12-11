@@ -4,6 +4,7 @@ package com.addressbookmain;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
+import java.util.function.Predicate;
 
 class Person 
 {   
@@ -59,7 +60,7 @@ public class AddressBookMain
         int temp = 1;
         while(temp > 0)
         {
-            System.out.println("[1.Edit]    [2.Delete]");
+            System.out.println("[1.Edit]    [2.Delete]  [3.Add]");
             System.out.print("Enter your choice : ");
             int choice = sc.nextInt();
             switch(choice)
@@ -140,6 +141,38 @@ public class AddressBookMain
                             {
                                 System.out.println("invalid name");
                             }
+                        }
+                break;
+                
+                case 3: //Add Multiple person
+                        System.out.print("enter name firstname: ");
+                        String searchFirstName = sc.next();
+                        Predicate<Person> pStream = s -> s.firstName.contains(searchFirstName);
+                        boolean b1 = personList.stream().anyMatch(pStream); 
+            
+                        if(b1 == true)
+                        {
+                            System.out.println("first name found");
+                        }
+                        else
+                        {
+                            System.out.print("Enter last name:");
+                            String lastName1 = sc.next();
+                            System.out.print("Enter address:");
+                            String address1 = sc.next();
+                            System.out.print("Enter city:");
+                            String city1 = sc.next();
+                            System.out.print("Enter state:");
+                            String state1 = sc.next();
+                            System.out.print("Enter zip:");
+                            String zip1 = sc.next();
+                            System.out.print("Enter phoennumber:");
+                            String phoneNumber1 = sc.next();
+                       
+                            Person personObjects1 = new Person(searchFirstName, lastName1, address1, city1, state1, zip1, phoneNumber1);
+                            personList.add(personObjects1);
+
+                            System.out.println("Inserted");
                         }
                 break;
                 
