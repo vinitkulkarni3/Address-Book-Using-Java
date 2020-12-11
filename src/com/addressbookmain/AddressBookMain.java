@@ -210,6 +210,36 @@ public class AddressBookMain
                         System.out.println();
                 break;
                 
+                case 5: //sort by city state zip
+                        System.out.println("---SORTING---");
+                        System.out.println("1.city 2.state 3.zip");
+                        int ip = sc.nextInt();
+                        
+                        if(ip == 1)
+                        {
+                        System.out.println("Sorted Successfully");
+                         personList.sort(Comparator.comparing(Person::getCity));
+                        System.out.println();
+                        }
+                        else if(ip == 2)
+                        {
+                            System.out.println("Sorted Successfully");
+                         personList.sort(Comparator.comparing(Person::getState));
+                        System.out.println();
+                        }
+                        else if(ip == 3)
+                        {
+                            System.out.println("Sorted Successfully");
+                         personList.sort(Comparator.comparing(Person::getZip));
+                        System.out.println();
+                        }
+                        else
+                        {
+                            System.out.println("Invalid option");
+                        }
+                           
+                break;
+                
                 default: System.out.println("Invalid Option");
                 break;
                 
